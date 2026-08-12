@@ -272,7 +272,7 @@ impl Cmd {
                 include_duplicates: self.include_duplicates,
                 authors: &self.author,
                 shells: &self.shell,
-                timezone: settings.timezone,
+                timezone: self.timezone.unwrap_or(settings.timezone),
             };
 
             let mut entries = run_non_interactive(settings, opt_filter, &query, &db).await?;
